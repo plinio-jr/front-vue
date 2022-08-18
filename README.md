@@ -21,3 +21,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # vue-teste
 # front-vue
 # front-vue
+# vue-django
