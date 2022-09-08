@@ -23,3 +23,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # front-vue
 # vue-django
 # vue-apresentacao
+# vue-apresentacao
