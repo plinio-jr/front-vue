@@ -3,10 +3,10 @@
     <section class="heri is-medium is-dark mb-6">
       <div class="hero-body has-text-centered">
         <p class="title mb-6">
-          Welcome to Djacket
+          Bem vindo
         </p>
         <p class="subtitle">
-          The best jacket store online
+          Precisa de ajuda para lembrar o que comprar?
         </p>
       </div>
 
@@ -14,20 +14,24 @@
 
     <div class="columns is multiline">
       <div class="column is-12">
-        <h2 class="is-size-2 has-text-centered">Latest Products</h2>
+        <h2 class="is-size-2 has-text-centered">Listas:</h2>
+        
+        <List />
+
+      <br>
+      <button> Nova Lista</button>
       </div>
 
-      <ProductBox 
-        v-for="product in latestProducts"
-        v-bind:key="product.id"
-        v-bind:product="product" />
-
+    
+          
     </div>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+
+import List from '@/components/List.vue'
 
 import ProductBox from '@/components/ProductBox'
 
@@ -39,12 +43,13 @@ export default {
     }
   },
   components: {
-    ProductBox
+    ProductBox,
+    List
   },
   mounted() {
     this.getLatestProducts()
 
-    document.title = 'Home | Djackets'
+    document.title = 'Home | Lista'
   },
   methods: {
     async getLatestProducts() {

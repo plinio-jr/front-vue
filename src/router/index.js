@@ -13,6 +13,8 @@ import LogIn from '../views/LogIn.vue'
 import MyAccount from '../views/MyAccount.vue'
 import Checkout from '../views/Checkout.vue'
 import Success from '../views/Success.vue'
+import Comentarios from '../views/Comentarios.vue'
+import Editar from '../views/Editar.vue'
 
 
 const routes = [
@@ -38,6 +40,11 @@ const routes = [
     path: '/log-in',
     name: 'LogIn',
     component: LogIn
+  },
+  {
+    path: '/editar',
+    name: 'Editar',
+    component: Editar
   },
   {
     path: '/my-account',
@@ -79,6 +86,11 @@ const routes = [
       path:'/:category_slug',
       name:'Category',
       component: Category 
+  },
+  {
+    path: '/comentarios',
+    name: 'Comentarios',
+    component: Comentarios
   },
 ]
 

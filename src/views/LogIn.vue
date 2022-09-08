@@ -2,18 +2,18 @@
     <div class="page-log-in">
         <div class="columns">
             <div class="column is-4 is-offset-4">
-                <h1 class="title">Log in</h1>
+                <h1 class="title">Login</h1>
 
                 <form @submit.prevent="submitForm">
                     <div class="field">
-                        <label>Username</label>
+                        <label>Email</label>
                         <div class="control">
                             <input type="text" class="input" v-model="username">
                         </div>
                     </div>
 
                     <div class="field">
-                        <label>Password</label>
+                        <label>Senha</label>
                         <div class="control">
                             <input type="password" class="input" v-model="password">
                         </div>
@@ -25,13 +25,13 @@
 
                     <div class="field">
                         <div class="control">
-                            <button class="button is-dark">Log in</button>
+                            <button class="button is-dark">Login</button>
                         </div>
                     </div>
 
                     <hr>
 
-                    Or <router-link to="/sign-up">click here</router-link> to sign up!
+                    <router-link to="/sign-up">clique aqui</router-link> para se Cadastrar!
                 </form>
             </div>
         </div>
@@ -50,7 +50,7 @@ export default {
         }
     },
     mounted() {
-        document.title = 'Log In | Djackets'
+        document.title = 'Login | Lista de Compras'
     },
     methods: {
         async submitForm() {
@@ -72,7 +72,7 @@ export default {
                     
                     localStorage.setItem("token", token)
                     
-                    const toPath = this.$route.query.to || '/cart'
+                    const toPath = this.$route.query.to || '/'
                     
                     this.$router.push(toPath)
                 })
@@ -82,7 +82,7 @@ export default {
                             this.errors.push(`${property}: ${error.response.data[property]}`)
                         }
                     } else {
-                        this.errors.push('Something went wrong. Please try again')
+                        this.errors.push('Algo deu errado. Por favor, tente novamente')
                         
                         console.log(JSON.stringify(error))
                     }
