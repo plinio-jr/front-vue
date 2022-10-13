@@ -16,10 +16,10 @@
       <div class="column is-12">
         <h2 class="is-size-2 has-text-centered">Listas:</h2>
         
-        <List />
+        <List v-for="(dado, i) of dados" :key="i" :info="dado"/>
 
       <br>
-      <button> Nova Lista</button>
+      <button @click="add"> Nova Lista</button>
       </div>
 
     
@@ -39,7 +39,17 @@ export default {
   name: 'HomeView',
   data(){
     return{
-      latestProducts:[]
+      criar:[],
+      dados: [
+        {
+          titulo: 'Titulo 1',
+          texto: 'lista feita no dia 23/06/22, por usuario X, onde foi usada no Supermecado Y.'
+        },
+        {
+          titulo: 'Titulo 2',
+          texto: 'lista feita no dia 23/06/22, por usuario X, onde foi usada no Supermecado W.'
+        }
+      ]
     }
   },
   components: {
@@ -52,6 +62,9 @@ export default {
     document.title = 'Home | Lista'
   },
   methods: {
+    add() {
+      this.dados.push(this.dados[0])
+    },
     async getLatestProducts() {
       this.$store.commit('setIsLoading', true)
       

@@ -1,16 +1,21 @@
 <template>
 <div class="menu">
-    <button @click="novoitem">Novo item</button>
+    <button @on-click="novoitem">Novo item</button>
     <button @click="novacatg">Nova categoria</button>
     <div class="lista">
         <br>
 </div >
 
      <NewItem />
+     <br>
      <NewItem />
+     <br>
      <NewItem />
+     <br>
      <NewItem />
+     <br>
      <NewItem />
+     <br>
      <NewItem />
 
 <br>
@@ -33,7 +38,13 @@ components:{NewItem},
 
 data() {
     return{
-        components: [NewItem]
+        components: [NewItem],
+        novoitem:{
+            nome:"",
+            quantidade:"",
+            peso:"",
+            preco:"",
+        }
     }
 }
 }
