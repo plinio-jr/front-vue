@@ -1,22 +1,12 @@
 <template>
 <div class="menu">
-    <button @on-click="novoitem">Novo item</button>
-    <button @click="novacatg">Nova categoria</button>
+    <button @click="add">Novo item</button>
+    <button @click="newcat">Nova categoria</button>
     <div class="lista">
         <br>
 </div >
 
-     <NewItem />
-     <br>
-     <NewItem />
-     <br>
-     <NewItem />
-     <br>
-     <NewItem />
-     <br>
-     <NewItem />
-     <br>
-     <NewItem />
+ <NewItem v-for="(dado, i) of dados" :key="i" :info="dado"/>
 
 <br>
 <br>
@@ -26,31 +16,47 @@
 </div>
 </div>
 
+<br>
+<button @click="save">Salvar</button>
 
   
 </template>
 
 <script>
 import NewItem from '@/components/NewItem.vue'
+import NewCat from '@/components/NewCat.vue'
 
 export default {
 components:{NewItem},
 
 data() {
     return{
-        components: [NewItem],
-        novoitem:{
-            nome:"",
-            quantidade:"",
-            peso:"",
-            preco:"",
+       criar:[],
+      dados: [
+         {
+          titulo: 'Titulo 1',
+          texto: 'lista feita no dia 23/06/22, por usuario X, onde foi usada no Supermecado Y.'
+        },
+        {
+          titulo: 'Titulo 2',
+          texto: 'lista feita no dia 23/06/22, por usuario X, onde foi usada no Supermecado W.'
         }
+      ]
     }
+},
+components: {
+    NewItem,
+    NewCat,
+},
+methods: {
+     add() {
+      this.dados.push(this.dados[0])
+    },
+    newcat(){
+    this.dados.push(this.dados[0])
+    }
+},
 }
-}
-
-
-
 </script>
 
 <style>

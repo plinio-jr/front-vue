@@ -14,7 +14,7 @@
                 <div class="field">
                         <label>nome</label>
                     <div class="control">
-                        <input type="text" class="input" v-model="username">
+                        <input type="text" class="input" v-model="firstname">
                     </div>
                     </div>
 
@@ -26,23 +26,9 @@
                     </div>
 
                     <div class="field">
-                        <label>Cidade</label>
+                        <label>Email</label>
                     <div class="control">
-                        <input type="subtitle" class="input" v-model="city">
-                    </div>
-                    </div>
-
-                     <div class="field">
-                        <label>Estado</label>
-                    <div class="control">
-                        <input type="subtitle" class="input" v-model="estado">
-                    </div>
-                    </div>
-
-                    <div class="field">
-                        <label>Pais</label>
-                    <div class="control">
-                        <input type="subtitle" class="input" v-model="pais">
+                        <input type="subtitle" class="input" v-model="email">
                     </div>
                     </div>
                     
@@ -51,9 +37,11 @@
                     <br>
                     <div class="field">
                         <div class="control">
-                            <button class="button is-primary" @change="save">Salvar</button>
+                            <button class="button is-success" @change="updateInfo">Salvar</button>
                             
-                            <button class="button is-dark" @change="edita">Editar</button>
+                            <button class="button is-warning" @change="edita">Editar</button>
+
+                            <button class="button is-danger" @click="deleta">Excluir</button>
                         </div>
                     </div>
                     
@@ -82,12 +70,10 @@ export default {
         return {
             username: '',
             lastname: '',
-            city: '',
-            estado:'',
-            pais:'',
+            email:'',
             errors: [],
-
-            orders: []
+            orders: [],
+            newUser: {},
         }
     },
     mounted() {
@@ -106,13 +92,31 @@ export default {
     
         },
         methods: {
-            edita() {
-                axios.delete(username)
-                axios.delete(lastname)
-                axios.delete(city)
-                axios.delete(estado)
-                axios.delete(pais)
-            }
+    SubmitDados() {
+      this.get()
+      console.log("No peril: ", this.user.first_name)
+      this.newUser.first_name = this.user.first_name
+      this.newUser.last_name = this.user.last_name
+      this.newUser.email = this.user.email
+    },
+    compareInfo() {
+      return this.newUser.email!= this.user.email|| this.newUser.first_name != this.user.first_name || this.newUser.last_name != this.user.last_name
+    },
+    async updateInfo() {
+      if (this.compareInfo()) {
+        try {
+          if (this.newUser.email== this.user.email) delete this.newUser.email
+          await this.update(this.newUser);
+          await this.setInfoUser();
+          this.salvar = true;
+        } catch (e) {
+          this.errorUpdate = true;
+          console.log(e);
+        }
+      } else {
+        this.notChanged = true;
+      }
+    }
         }
     }
 }

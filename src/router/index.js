@@ -15,6 +15,7 @@ import Checkout from '../views/Checkout.vue'
 import Success from '../views/Success.vue'
 import Comentarios from '../views/Comentarios.vue'
 import Editar from '../views/Editar.vue'
+import Perfil from '../views/Perfil.vue'
 
 
 const routes = [
@@ -63,6 +64,14 @@ const routes = [
     path: '/cart',
     name: 'Cart',
     component: Cart
+  },
+  {
+    path: '/perfil',
+    name: 'Perfli',
+    component: Perfil,
+    meta: {
+      requireLogin: true
+    }
   },
   {
     path: '/cart/success',
